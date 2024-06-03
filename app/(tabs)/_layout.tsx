@@ -29,7 +29,7 @@ export default function TabLayout() {
       }}>
       <Tabs.Screen redirect name="index" />
       <Tabs.Screen
-        name="HomeScreen"
+        name="HomeTab"
         options={{
           title: 'Home',
           tabBarIcon: ({ color }) => <AntDesign name="home" size={24} color={color} />, // style={{ marginBottom: 8 }}
