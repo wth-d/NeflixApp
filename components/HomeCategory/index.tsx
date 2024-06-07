@@ -11,7 +11,7 @@ interface HomeCategoryProps {
     movies: {
       id: string,
       poster: string,
-  }[];
+    }[];
   }
 }
 
