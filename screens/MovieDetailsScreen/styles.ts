@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     // marginTop: 40,
     // backgroundColor: "white",
   },
-  image: {
+  image: { // removed
     width: '100%',
     // height: 220,
     aspectRatio: 16/9, // height will increase with the image width, so it's adaptable to different screen sizes;

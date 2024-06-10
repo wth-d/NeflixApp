@@ -1,26 +1,21 @@
 import React from "react";
-import { Image } from "react-native";
+import { Image, Pressable } from "react-native";
 import { Octicons } from "@expo/vector-icons";
 import { Text, View } from '@/components/Themed';
 
 import styles from "./styles";
+import { Episode } from "@/types";
 
 interface EpisodeItemProps {
-  episode: {
-    id: string,
-    title: string,
-    poster: string,
-    duration: string,
-    plot: string,
-    video: string,
-  }
+  episode: Episode,
+  onPressItem: (episode: Episode) => {},
 }
 
 const EpisodeItem = (props: EpisodeItemProps) => {
-  const { episode } = props;
+  const { episode, onPressItem } = props;
 
   return (
-    <View style={{ marginVertical: 10, marginHorizontal: 12 }}>
+    <Pressable onPress={() => onPressItem(episode)} style={{ marginVertical: 10, marginHorizontal: 12 }}>
       <View style={styles.row}>
         <Image style={styles.image} source={{ uri: episode.poster }} />
 
@@ -33,7 +28,7 @@ const EpisodeItem = (props: EpisodeItemProps) => {
       </View>
 
       <Text style={styles.plot}>{episode.plot}</Text>
-    </View>
+    </Pressable>
   );
 };
 

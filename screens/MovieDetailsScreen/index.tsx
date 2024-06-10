@@ -8,12 +8,14 @@ import ModalSelector from 'react-native-modal-selector';
 import styles from "./styles";
 
 import movie from "@/assets/data/movie";
+import VideoPlayer from "@/components/VideoPlayer";
 
 const firstEpisode = movie.seasons.items[0].episodes.items[0];
 const firstSeason = movie.seasons.items[0];
 
 const MovieDetailsScreen = () => {
   const [selectedSeason, setSelectedSeason] = useState(firstSeason.name);
+  const [currentEpisode, setCurrentEpisode] = useState(firstEpisode);
 
   // const seasonNames = movie.seasons.items.map((season) => season.name);
 
@@ -22,7 +24,7 @@ const MovieDetailsScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Image style={styles.image} source={{ uri: firstEpisode.poster }} />
+      <VideoPlayer episode={currentEpisode} />
 
       <FlatList
         data={
@@ -30,7 +32,9 @@ const MovieDetailsScreen = () => {
         }
         // "?." is a special syntax; (it means that if the season is undefined, then return an empty array;)
         // firstSeason.episodes.items
-        renderItem={({ item }) => <EpisodeItem episode={item} />}
+        renderItem={({ item }) => (
+          <EpisodeItem episode={item} onPressItem={setCurrentEpisode} />
+        )}
         style={{ marginBottom: 250 }} // need this margin so that can scroll to the bottom;
         ListHeaderComponent={
           // {/* this View with padding should wrap everything below inside it so that the left&right are vertically aligned */}
